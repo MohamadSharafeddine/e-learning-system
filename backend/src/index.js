@@ -5,6 +5,7 @@ import connectToDatabase from "./database/connection.js";
 import userRoutes from "./routes/users.routes.js";
 import courseRoutes from "./routes/courses.routes.js";
 import fileRoutes from "./routes/files.routes.js";
+import withdrawalRoutes from "./routes/withdrawals.routes.js";
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ connectToDatabase();
 app.use("/api/users", userRoutes);
 app.use("/api/courses", courseRoutes);
 app.use("/api/files", fileRoutes);
+app.use("/api/withdrawals", withdrawalRoutes);
 
 app.get("/api/test", (req, res) => {
   res.send("API is working");
