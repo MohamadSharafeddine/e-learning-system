@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 
-// Add this line to set the strictQuery option explicitly
 mongoose.set("strictQuery", true);
 
 const connectToDatabase = async () => {
@@ -12,7 +11,7 @@ const connectToDatabase = async () => {
     console.log("Connected to database");
   } catch (error) {
     console.error("Failed to connect to database", error);
-    process.exit(1); // Exit process with failure
+    // process.exit(1);
   }
 };
 
