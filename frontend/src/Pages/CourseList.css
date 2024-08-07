@@ -1,0 +1,44 @@
+.courselist-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.courselist {
+  list-style: none;
+  padding: 0;
+}
+
+.courselist-item {
+  padding: 0.5rem;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-course-button,
+.edit-button,
+.delete-button {
+  margin-left: 1rem;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.add-course-button {
+  margin-bottom: 1rem;
+}
+
+.delete-button {
+  background-color: red;
+}
+
+.edit-button {
+  background-color: blue;
+}
