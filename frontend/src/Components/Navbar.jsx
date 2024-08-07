@@ -21,6 +21,9 @@ const Navbar = () => {
         <li className="navItem">
           <Link to="/courses/new">Add Course</Link>
         </li>
+        <li className="navItem">
+          <Link to="/files/upload">Upload File</Link>
+        </li>
       </ul>
     </nav>
   );

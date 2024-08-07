@@ -5,6 +5,7 @@ import Login from "./Pages/Login";
 import UserList from "./Pages/UserList";
 import CourseList from "./Pages/CourseList";
 import CourseForm from "./Pages/CourseForm";
+import FileUpload from "./Pages/FileUpload";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import "./App.css";
@@ -22,6 +23,7 @@ const App = () => {
             <Route path="/courses" element={<CourseList />} />
             <Route path="/courses/new" element={<CourseForm />} />
             <Route path="/courses/edit/:courseId" element={<CourseForm />} />
+            <Route path="/files/upload" element={<FileUpload />} />
           </Routes>
         </div>
         <Footer />
