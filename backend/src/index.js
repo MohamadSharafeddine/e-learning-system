@@ -6,6 +6,7 @@ import userRoutes from "./routes/users.routes.js";
 import courseRoutes from "./routes/courses.routes.js";
 import fileRoutes from "./routes/files.routes.js";
 import withdrawalRoutes from "./routes/withdrawals.routes.js";
+import authRoutes from "./routes/auth.routes.js";
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/courses", courseRoutes);
 app.use("/api/files", fileRoutes);
 app.use("/api/withdrawals", withdrawalRoutes);
+app.use("/api/auth", authRoutes);
 
 app.get("/api/test", (req, res) => {
   res.send("API is working");
