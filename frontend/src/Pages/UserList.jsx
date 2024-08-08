@@ -4,6 +4,7 @@ import "./UserList.css";
 
 const UserList = () => {
   const [users, setUsers] = useState([]);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -11,6 +12,7 @@ const UserList = () => {
         const response = await api.get("/users");
         setUsers(response.data);
       } catch (error) {
+        setMessage("Failed to fetch users");
         console.error("Failed to fetch users", error);
       }
     };
@@ -19,12 +21,14 @@ const UserList = () => {
   }, []);
 
   return (
-    <div className="userlist-container">
+    <div className="user-list-container">
       <h2>User List</h2>
-      <ul className="userlist">
+      {message && <p className="user-list-message">{message}</p>}
+      <ul className="user-list">
         {users.map((user) => (
-          <li key={user._id} className="userlist-item">
-            {user.name} - {user.email}
+          <li key={user._id} className="user-item">
+            <p>Name: {user.name}</p>
+            <p>Email: {user.email}</p>
           </li>
         ))}
       </ul>

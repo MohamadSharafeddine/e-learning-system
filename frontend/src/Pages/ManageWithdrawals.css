@@ -1,0 +1,35 @@
+.manage-withdrawals-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.withdrawal-list {
+  list-style: none;
+  padding: 0;
+}
+
+.withdrawal-item {
+  padding: 0.5rem;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 1rem;
+}
+
+.approve-button,
+.reject-button {
+  margin-right: 1rem;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.approve-button {
+  background-color: green;
+}
+
+.reject-button {
+  background-color: red;
+}

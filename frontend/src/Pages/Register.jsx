@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import api from "../Api/api";
 import "./Register.css";
 
@@ -11,14 +12,11 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await api.post("/auth/register", {
-        name,
-        email,
-        password,
-      });
-      setMessage(response.data.message);
+      await api.post("/users", { name, email, password });
+      setMessage("User registered successfully");
+      window.location.href = "/login";
     } catch (error) {
-      setMessage(error.response?.data?.message || "Failed to register");
+      setMessage(error.response?.data || "Failed to register");
     }
   };
 
@@ -52,6 +50,9 @@ const Register = () => {
         </button>
       </form>
       {message && <p className="register-message">{message}</p>}
+      <p>
+        Already have an account? <Link to="/login">Login here</Link>
+      </p>
     </div>
   );
 };

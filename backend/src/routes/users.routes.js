@@ -1,23 +1,37 @@
 import express from "express";
-import {
-  createUser,
-  getUsers,
-  getUserById,
-  updateUser,
-  deleteUser,
-} from "../controllers/user.controller.js";
-import { authMiddleware } from "../middleware/auth.middleware.js";
+import bcrypt from "bcryptjs";
+import { User } from "../models/user.model.js";
 
 const router = express.Router();
 
-router.post("/register", createUser);
+router.post("/", async (req, res) => {
+  const { name, email, password } = req.body;
 
-router.get("/", authMiddleware, getUsers);
+  try {
+    let user = await User.findOne({ email });
+    if (user) {
+      return res.status(400).send("User already registered.");
+    }
 
-router.get("/:id", authMiddleware, getUserById);
+    user = new User({ name, email, password });
 
-router.put("/:id", authMiddleware, updateUser);
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(user.password, salt);
 
-router.delete("/:id", authMiddleware, deleteUser);
+    await user.save();
+    res.send({ message: "User registered", user });
+  } catch (error) {
+    res.status(500).send("Internal server error");
+  }
+});
+
+router.get("/", async (req, res) => {
+  try {
+    const users = await User.find();
+    res.send(users);
+  } catch (error) {
+    res.status(500).send("Internal server error");
+  }
+});
 
 export default router;
